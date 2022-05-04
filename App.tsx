@@ -27,15 +27,4 @@ const App = () => {
   );
 };
 
-const styles = StyleSheet.create({
-  text: {
-    color: 'black'
-  },
-  textContainer: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center'
-  }
-})
-
 export default App;
