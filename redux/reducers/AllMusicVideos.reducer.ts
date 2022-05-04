@@ -2,11 +2,13 @@ import { Video } from "../../models/Video";
 import { AllMusicVideosDispatchTypes } from "../actions/AllMusicVideos/AllMusicVideos.types";
 
 interface IDefaultState {
-    musicVideos?: Array<Video>
+    musicVideos: Array<Video>,
+    visibleVideos: Array<Video>
 }
 
 const defaultState: IDefaultState = {
-    musicVideos: []
+    musicVideos: [],
+    visibleVideos: []
 }
 
 const AllMusicVideosReducer = (state = defaultState, action: AllMusicVideosDispatchTypes): IDefaultState => {
@@ -14,8 +16,15 @@ const AllMusicVideosReducer = (state = defaultState, action: AllMusicVideosDispa
         case 'GET_ALL_MUSIC_VIDEOS':
             return {
                 ...state,
-                musicVideos: action.videos
+                musicVideos: action.videos,
+                visibleVideos: action.videos.slice(0, 50)
             };
+        case 'LOAD_VIDEOS':
+            const visibleVideos = [ ...state.visibleVideos, ...state.musicVideos.slice(state.visibleVideos.length, state.visibleVideos.length + 50)];
+            return {
+                ...state,
+                visibleVideos
+            }
         default:
             return state;
     }
