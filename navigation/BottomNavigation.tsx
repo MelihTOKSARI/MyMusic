@@ -4,6 +4,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 import AllMusicScreen from "../screens/AllMusicsScreen";
 import MyMusicScreen from "../screens/MyMusicScreen";
+import Colors from "../constants/Colors";
 
 const BottomNavigation = () => {
     const Tab = createBottomTabNavigator();
@@ -26,6 +27,8 @@ const BottomNavigation = () => {
         <Tab.Navigator screenOptions={({route}) => ({
             headerShown: true,
             tabBarIcon: ({ focused, size, color }) => setIcons(route.name, focused, size, color),
+            tabBarActiveTintColor: Colors.primary500,
+            tabBarInactiveTintColor: Colors.primary100,
         })}>
             <Tab.Screen name="AllMusicScreen" component={AllMusicScreen} options={{
                 title: 'All Music'
