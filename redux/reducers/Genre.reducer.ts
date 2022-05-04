@@ -2,7 +2,7 @@ import { Genre } from "../../models/Genre";
 import { GenreDispatchTypes } from "../actions/Genre/Genre.types";
 
 interface IDefaultState {
-    genres?: Array<Genre>
+    genres: Array<Genre>
 }
 
 const defaultState: IDefaultState = {
@@ -15,6 +15,15 @@ const GenreReducer = (state = defaultState, action: GenreDispatchTypes): IDefaul
             return {
                 ...state,
                 genres: action.genres
+            }
+        case 'GENRE_SELECTED':
+            const updatedGenres = state.genres.map(item => ({
+                ...item,
+                selected: item.id === action.genreId ? !item.selected : item.selected
+            }))
+            return {
+                ...state,
+                genres: updatedGenres
             }
         default:
             return state;
