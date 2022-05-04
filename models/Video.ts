@@ -4,5 +4,6 @@ export interface Video {
     title: string,
     release_year: number,
     genre_id: number,
-    image_url: string
+    image_url: string,
+    isFavorite?: boolean
 }

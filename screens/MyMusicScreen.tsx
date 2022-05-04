@@ -1,10 +1,16 @@
 import React from "react"
 import { StyleSheet, Text, View } from "react-native"
+import { useSelector } from "react-redux";
+import VideoList from "../components/VideoList";
+import { RootState } from "../redux/store";
 
 const MyMusicScreen = () => {
+
+    const favoriteState = useSelector((store: RootState) => store.favorites);
+
     return (
         <View style={styles.container}>
-            <Text style={styles.text}>My Music Screen</Text>
+            <VideoList videos={favoriteState.favoriteVideos} />
         </View>
     )
 }

@@ -5,6 +5,7 @@ export default {
     videoItem: {
         height: 240,
         width: 320,
-        imageHeight: 200
+        imageHeightNormal: 200,
+        imageHeightBig: 350
     }
 }

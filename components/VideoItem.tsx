@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native"
 import React from "react"
 import { Image, StyleSheet, Text, View } from "react-native"
 
@@ -12,8 +13,15 @@ interface VideoItemProps {
 }
 
 const VideoItem = (props: VideoItemProps) => {
+
+    const navigation = useNavigation();
+
+    const onItemPressed = () => {
+        navigation.navigate('MusicDetailScreen', { video: props.video });
+    }
+
     return (
-        <Card backgroundColor={Colors.primary200}>
+        <Card backgroundColor={Colors.primary200} onPress={onItemPressed}>
             <View style={styles(props.cardWidth).container}>
                 <View>
                     <Image style={styles(props.cardWidth).image} resizeMode='cover' source={{ uri: props.video.image_url}} />
@@ -37,7 +45,7 @@ const styles = (width?: number) => StyleSheet.create({
         borderTopLeftRadius: 8,
         borderTopRightRadius: 8,
         width: width, 
-        height: Constants.videoItem.imageHeight,
+        height: Constants.videoItem.imageHeightNormal,
         marginBottom: 8
     },
     title: {
