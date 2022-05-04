@@ -1,9 +1,11 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { SafeAreaView, StatusBar, StyleSheet, useColorScheme } from 'react-native';
+import { Provider } from 'react-redux';
 
 import Colors from './constants/Colors';
 import StackNavigation from './navigation/StackNavigation';
+import store from './redux/store';
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -16,9 +18,11 @@ const App = () => {
   return (
     <SafeAreaView style={backgroundStyle}>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <NavigationContainer>
-        <StackNavigation />
-      </NavigationContainer>
+      <Provider store={store}>
+        <NavigationContainer>
+          <StackNavigation />
+        </NavigationContainer>
+      </Provider>
     </SafeAreaView>
   );
 };
