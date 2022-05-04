@@ -1,4 +1,4 @@
-import { Video } from "../../models/Video";
+import { Video } from "../../../models/Video";
 
 export const GET_ALL_MUSIC_VIDEOS = 'GET_ALL_MUSIC_VIDEOS';
 

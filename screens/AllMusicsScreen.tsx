@@ -1,13 +1,17 @@
 import React, { useEffect } from "react"
 import { StyleSheet, Text, View } from "react-native"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
+import { GetDataset } from "../redux/actions/Dataset/Dataset.action"
 import { RootState } from "../redux/store"
 
 const AllMusicScreen = () => {
+    const dispatch = useDispatch();
+
     const allVideosState = useSelector((store: RootState) => store.allMusicVideos);
 
     useEffect(() => {
         console.log('[AllMusicScreen-useEffect] allVideoState.musicVideos.length:', allVideosState.musicVideos?.length);
+        dispatch(GetDataset());
     }, [])
 
     return (
