@@ -9,7 +9,6 @@ const GenreMiddleware: Middleware = store => next => action => {
 
     const handleGenreSelection = () => {
         const selectedGenres = store.getState().genre.genres.filter((t: Genre) => t.selected);
-        console.log('selectedGenres:', selectedGenres.length);
         if(selectedGenres.length === 0) {
             store.dispatch(ClearFilter());
         } else {

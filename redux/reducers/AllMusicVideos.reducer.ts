@@ -28,7 +28,6 @@ const AllMusicVideosReducer = (state = defaultState, action: AllMusicVideosDispa
                 visibleVideos: action.videos.slice(0, 50)
             };
         case 'CLEAR_FILTER':
-            console.log('a ', state.tmpVisibleVideos.length);
             return {
                 ...state,
                 visibleVideos: state.tmpVisibleVideos
@@ -54,8 +53,6 @@ const AllMusicVideosReducer = (state = defaultState, action: AllMusicVideosDispa
             tmpVisibleVideos = action.genreIds.length > 0 && state.tmpVisibleVideos.length === 0
                 ? state.visibleVideos
                 : state.tmpVisibleVideos;
-
-            console.log('tmpVisibleVideos:', tmpVisibleVideos.length);
 
             const filteredRecords = state.musicVideos.filter(t => {
                 return action.genreIds.includes(t.genre_id);
